@@ -3,205 +3,306 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Automated Bank Reconciliation for Small Business</title>
+    <title>Automated Bank Reconciliation | Catch Errors Before They Cost You</title>
+    <meta name="description" content="AI-powered bank reconciliation for small business. Save hours every week.">
     <style>
         :root {
-            --primary: #7c3aed;
-            --primary-dark: #6d28d9;
-            --text: #1f2937;
-            --text-light: #6b7280;
-            --bg: #ffffff;
-            --bg-alt: #f5f3ff;
-            --border: #e5e7eb;
-            --success: #10b981;
+            --primary: #0f172a;
+            --accent: #8b5cf6;
+            --accent-hover: #7c3aed;
+            --text: #334155;
+            --text-light: #64748b;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --success: #22c55e;
+            --border: #e2e8f0;
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: var(--text);
             background: var(--bg);
         }
         
-        .container {
-            max-width: 640px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-        }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 1.5rem; }
         
-        header { text-align: center; margin-bottom: 3rem; }
-        
-        h1 {
-            font-size: 1.875rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-        
-        .tagline {
-            font-size: 1.125rem;
-            color: var(--text-light);
-        }
-        
-        .problem {
-            background: var(--bg-alt);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            border-left: 4px solid var(--primary);
-        }
-        
-        .problem h2 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
-        }
-        
-        .problem p { color: var(--text-light); font-size: 0.95rem; }
-        
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-        
-        .stat {
+        .hero {
+            padding: 5rem 0 4rem;
             text-align: center;
-            padding: 1rem;
-            background: var(--bg-alt);
-            border-radius: 8px;
+            background: linear-gradient(180deg, #f5f3ff 0%, #f1f5f9 100%);
         }
         
-        .stat-number {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-        
-        .stat-label {
+        .badge {
+            display: inline-block;
+            padding: 0.375rem 0.875rem;
+            background: #ede9fe;
+            color: #5b21b6;
             font-size: 0.75rem;
-            color: var(--text-light);
+            font-weight: 600;
+            border-radius: 9999px;
+            margin-bottom: 1.5rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
         
-        .solution { margin-bottom: 2rem; }
-        
-        .solution h2 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
+        h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--primary);
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.025em;
         }
         
-        .features { list-style: none; }
+        h1 span { color: var(--accent); }
         
-        .features li {
-            padding: 0.75rem 0;
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            max-width: 540px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.875rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            padding: 2rem 0;
             border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
         }
         
-        .features li:last-child { border-bottom: none; }
+        .stat { text-align: center; }
         
-        .check { color: var(--success); font-weight: bold; }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+        }
         
-        .cta {
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+        }
+        
+        .section { padding: 4rem 0; }
+        
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        
+        .section-header h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+        
+        .section-header p { color: var(--text-light); max-width: 500px; margin: 0 auto; }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .card {
+            background: var(--card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+        
+        .card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .card p { font-size: 0.875rem; color: var(--text-light); }
+        
+        .check { color: var(--success); font-weight: bold; margin-right: 0.25rem; }
+        
+        .waitlist-section {
             background: var(--primary);
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .waitlist-section h2 { color: white; font-size: 1.75rem; margin-bottom: 0.75rem; }
+        .waitlist-section p { color: #94a3b8; margin-bottom: 1.5rem; }
+        
+        .waitlist-form {
+            display: flex;
+            gap: 0.75rem;
+            max-width: 440px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .waitlist-form input {
+            flex: 1;
+            min-width: 200px;
+            padding: 0.875rem 1rem;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            outline: none;
+        }
+        
+        .waitlist-form input::placeholder { color: #94a3b8; }
+        
+        .waitlist-form input:focus { border-color: var(--accent); background: rgba(255, 255, 255, 0.15); }
+        
+        .waitlist-form button {
+            background: var(--accent);
             color: white;
             border: none;
-            width: 100%;
-            padding: 1rem;
+            padding: 0.875rem 1.5rem;
             font-size: 1rem;
             font-weight: 600;
             border-radius: 8px;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: all 0.2s;
+            white-space: nowrap;
         }
         
-        .cta:hover { background: var(--primary-dark); }
+        .waitlist-form button:hover { background: var(--accent-hover); }
         
-        .form-group { margin-top: 1.5rem; }
-        
-        input[type="email"] {
-            width: 100%;
-            padding: 0.875rem;
-            border: 2px solid var(--border);
-            border-radius: 8px;
-            font-size: 1rem;
-            margin-bottom: 0.75rem;
-        }
-        
-        input[type="email"]:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-        
-        .privacy {
-            font-size: 0.75rem;
-            color: var(--text-light);
-            text-align: center;
-            margin-top: 1rem;
-        }
+        .privacy { color: #64748b; font-size: 0.75rem; margin-top: 1rem; }
         
         footer {
             text-align: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
+            padding: 2rem 0;
             color: var(--text-light);
             font-size: 0.875rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        @media (max-width: 640px) {
+            .stats { grid-template-columns: 1fr; }
+            .waitlist-form { flex-direction: column; }
+            .waitlist-form input, .waitlist-form button { width: 100%; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Reconcile Your Bank Statements in Seconds, Not Hours</h1>
-            <p class="tagline">Automated bank reconciliation powered by AI. Catch discrepancies before they become problems.</p>
-        </header>
-        
-        <div class="problem">
-            <h2>The Problem</h2>
-            <p>Manual bank reconciliation can be incredibly inefficient. Hours spent matching transactions. Errors that slip through. Financial reports that are always out of date.</p>
+    <section class="hero">
+        <div class="container">
+            <span class="badge">For Small Business</span>
+            <h1>Reconcile in <span>Seconds</span>, Not Hours</h1>
+            <p>AI-powered bank reconciliation that catches errors before they become problems.</p>
+            <a href="#waitlist" class="cta-button">Join the Waitlist →</a>
         </div>
-        
+    </section>
+    
+    <div class="container">
         <div class="stats">
             <div class="stat">
-                <div class="stat-number">Hours</div>
-                <div class="stat-label">Saved Per Week</div>
+                <div class="stat-number">80%</div>
+                <div class="stat-label">less time on reconciliation</div>
             </div>
             <div class="stat">
                 <div class="stat-number">99.9%</div>
-                <div class="stat-label">Accuracy</div>
+                <div class="stat-label">accuracy with AI matching</div>
             </div>
         </div>
         
-        <div class="solution">
-            <h2>What We're Building</h2>
-            <ul class="features">
-                <li><span class="check">✓</span> Automatic transaction matching across accounts</li>
-                <li><span class="check">✓</span> AI-powered discrepancy detection</li>
-                <li><span class="check">✓</span> Syncs with QuickBooks, Xero, FreshBooks</li>
-                <li><span class="check">✓</span> Starts at $39/month</li>
-            </ul>
-        </div>
-        
-        <form id="waitlist-form" action="https://formspree.io/f/your-form-id" method="POST">
-            <button type="submit" class="cta">Join the Waitlist</button>
-            <div class="form-group">
-                <input type="email" name="email" placeholder="Enter your email" required>
+        <section class="section">
+            <div class="section-header">
+                <h2>The Problem</h2>
+                <p>Manual bank reconciliation is inefficient and error-prone.</p>
             </div>
-            <p class="privacy">No spam. Unsubscribe anytime.</p>
-        </form>
+            <div class="grid">
+                <div class="card">
+                    <h3>⏰ Time Consuming</h3>
+                    <p>Hours spent matching transactions. Every week. Forever.</p>
+                </div>
+                <div class="card">
+                    <h3>😰 Error-Prone</h3>
+                    <p>Manual matching means mistakes slip through. Costly errors.</p>
+                </div>
+                <div class="card">
+                    <h3>📊 Out of Date</h3>
+                    <p>By the time you reconcile, financial reports are already stale.</p>
+                </div>
+            </div>
+        </section>
         
-        <footer>
-            <p>For small businesses tired of manual bookkeeping.</p>
-        </footer>
+        <section class="section">
+            <div class="section-header">
+                <h2>The Solution</h2>
+                <p>Automated reconciliation that works while you sleep.</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3><span class="check">✓</span> Smart Matching</h3>
+                    <p>AI learns your patterns. Matches transactions automatically.</p>
+                </div>
+                <div class="card">
+                    <h3><span class="check">✓</span> Instant Alerts</h3>
+                    <p>Get notified of discrepancies before they become problems.</p>
+                </div>
+                <div class="card">
+                    <h3><span class="check">✓</span> Accounting Integration</h3>
+                    <p>Syncs with QuickBooks, Xero, FreshBooks automatically.</p>
+                </div>
+                <div class="card">
+                    <h3><span class="check">✓</span> Starts at $39/mo</h3>
+                    <p>Less than the cost of an hour of accountant time.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="waitlist-section" id="waitlist">
+            <h2>Get Early Access</h2>
+            <p>Be the first to know when we launch. No spam, ever.</p>
+            <form class="waitlist-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <input type="email" name="email" placeholder="Enter your work email" required>
+                <button type="submit">Join Waitlist</button>
+            </form>
+            <p class="privacy">We respect your privacy. Unsubscribe anytime.</p>
+        </section>
     </div>
+    
+    <footer>
+        <div class="container">
+            <p>© 2026. Built for small businesses tired of manual bookkeeping.</p>
+        </div>
+    </footer>
 </body>
 </html>
