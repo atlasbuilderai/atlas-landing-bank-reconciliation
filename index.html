@@ -302,8 +302,11 @@
                 <div>
                     <h2>Join Waitlist</h2>
                     <p style="color: #94a3b8; margin-bottom: 1rem;">Be the first to know when we launch.</p>
-                    <a href="https://tally.so/r/kdZNqr" target="_blank" rel="noopener" class="waitlist-link">Join Waitlist</a>
-                    <p class="form-message" aria-live="polite">Opens a quick signup form in a new tab.</p>
+                    <form class="waitlist-form native-signup-form" data-experiment="bank-reconciliation" data-pricing="$49-launch-$79-normal">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <button type="submit">Join Waitlist</button>
+            </form>
+            <p class="form-message" aria-live="polite"></p>
                 </div>
                 <div style="border-left: 1px solid #374151; padding-left: 1rem;">
                     <h2>Enterprise?</h2>
@@ -321,5 +324,56 @@
             <p>© 2026. Built for small businesses tired of manual bookkeeping.</p>
         </div>
     </footer>
+<script>
+(function(){
+  async function submitNativeForm(form) {
+    const emailInput = form.querySelector('input[name="email"]');
+    const button = form.querySelector('button[type="submit"]');
+    const msg = form.parentElement.querySelector('.form-message') || form.nextElementSibling;
+    const email = (emailInput.value || '').trim();
+    if (!email) return;
+    button.disabled = true;
+    const original = button.textContent;
+    button.textContent = 'Submitting...';
+    if (msg) { msg.textContent = ''; msg.style.color = '#94a3b8'; }
+    try {
+      const res = await fetch('https://atlas-signups-worker.business-risc.workers.dev/api/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          experiment: form.dataset.experiment,
+          source: form.dataset.experiment,
+          pricing: form.dataset.pricing,
+          cta: 'waitlist',
+          page_url: window.location.href
+        })
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok) throw new Error(data.error || 'Submit failed');
+      form.reset();
+      if (msg) {
+        msg.textContent = 'Thanks — you're on the waitlist.';
+        msg.style.color = '#86efac';
+      }
+    } catch (err) {
+      console.error(err);
+      if (msg) {
+        msg.textContent = 'Something went wrong. Please try again.';
+        msg.style.color = '#fca5a5';
+      }
+    } finally {
+      button.disabled = false;
+      button.textContent = original;
+    }
+  }
+  document.querySelectorAll('.native-signup-form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      submitNativeForm(form);
+    });
+  });
+})();
+</script>
 </body>
 </html>
