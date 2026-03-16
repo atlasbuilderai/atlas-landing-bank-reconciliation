@@ -289,16 +289,22 @@
         </section>
         
         <section class="waitlist-section" id="waitlist">
-            <h2>Get Early Access</h2>
-            <p>Be the first to know when we launch. No spam, ever.</p>
-            <form class="waitlist-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                <input type="email" name="email" placeholder="Enter your work email" required>
-                <button type="submit">Join Waitlist</button>
-            </form>
-            <p class="privacy">We respect your privacy. Unsubscribe anytime.</p>
-            <p style="margin-top: 1rem; font-size: 0.75rem;">
-                <a href="#" style="color: #94a3b8;" onclick="alert('Demo scheduling for enterprise. Contact us at enterprise@example.com'); return false;">Request Demo →</a>
-            </p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 600px; margin: 0 auto;">
+                <div>
+                    <h2>Join Waitlist</h2>
+                    <p style="color: #94a3b8; margin-bottom: 1rem;">Be the first to know when we launch.</p>
+                    <form class="waitlist-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="flex-direction: column;">
+                        <input type="email" name="email" placeholder="Enter your work email" required>
+                        <button type="submit">Join Waitlist</button>
+                    </form>
+                </div>
+                <div style="border-left: 1px solid #374151; padding-left: 1rem;">
+                    <h2>Enterprise?</h2>
+                    <p style="color: #94a3b8; margin-bottom: 1rem;">Need a custom solution?</p>
+                    <a href="#" onclick="alert('Demo scheduling for enterprise. Contact us at enterprise@example.com'); return false;" style="display: inline-block; background: transparent; color: white; padding: 0.875rem 1.5rem; font-size: 1rem; font-weight: 600; border-radius: 8px; text-decoration: none; border: 2px solid #8b5cf6;">Request Demo</a>
+                </div>
+            </div>
+            <p class="privacy" style="margin-top: 1.5rem;">We respect your privacy. Unsubscribe anytime.</p>
         </section>
     </div>
     
