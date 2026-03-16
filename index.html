@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated Bank Reconciliation for Small Business</title>
+    <style>
+        :root {
+            --primary: #7c3aed;
+            --primary-dark: #6d28d9;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --bg: #ffffff;
+            --bg-alt: #f5f3ff;
+            --border: #e5e7eb;
+            --success: #10b981;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+        
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        
+        header { text-align: center; margin-bottom: 3rem; }
+        
+        h1 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        .tagline {
+            font-size: 1.125rem;
+            color: var(--text-light);
+        }
+        
+        .problem {
+            background: var(--bg-alt);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .problem h2 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .problem p { color: var(--text-light); font-size: 0.95rem; }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 1rem;
+            background: var(--bg-alt);
+            border-radius: 8px;
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .solution { margin-bottom: 2rem; }
+        
+        .solution h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        .features { list-style: none; }
+        
+        .features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .features li:last-child { border-bottom: none; }
+        
+        .check { color: var(--success); font-weight: bold; }
+        
+        .cta {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .cta:hover { background: var(--primary-dark); }
+        
+        .form-group { margin-top: 1.5rem; }
+        
+        input[type="email"] {
+            width: 100%;
+            padding: 0.875rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        input[type="email"]:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .privacy {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            text-align: center;
+            margin-top: 1rem;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Reconcile Your Bank Statements in Seconds, Not Hours</h1>
+            <p class="tagline">Automated bank reconciliation powered by AI. Catch discrepancies before they become problems.</p>
+        </header>
+        
+        <div class="problem">
+            <h2>The Problem</h2>
+            <p>Manual bank reconciliation can be incredibly inefficient. Hours spent matching transactions. Errors that slip through. Financial reports that are always out of date.</p>
+        </div>
+        
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">Hours</div>
+                <div class="stat-label">Saved Per Week</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">99.9%</div>
+                <div class="stat-label">Accuracy</div>
+            </div>
+        </div>
+        
+        <div class="solution">
+            <h2>What We're Building</h2>
+            <ul class="features">
+                <li><span class="check">✓</span> Automatic transaction matching across accounts</li>
+                <li><span class="check">✓</span> AI-powered discrepancy detection</li>
+                <li><span class="check">✓</span> Syncs with QuickBooks, Xero, FreshBooks</li>
+                <li><span class="check">✓</span> Starts at $39/month</li>
+            </ul>
+        </div>
+        
+        <form id="waitlist-form" action="https://formspree.io/f/your-form-id" method="POST">
+            <button type="submit" class="cta">Join the Waitlist</button>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <p class="privacy">No spam. Unsubscribe anytime.</p>
+        </form>
+        
+        <footer>
+            <p>For small businesses tired of manual bookkeeping.</p>
+        </footer>
+    </div>
+</body>
+</html>
